@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Binlist Net</string>
+    <string name="scheme_network">SCHEME / NETWORK</string>
+    <string name="brand">BRAND</string>
+    <string name="card_number">CARD NUMBER</string>
+    <string name="length">LENGTH</string>
+    <string name="luhn">LUHN</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="splash">/</string>
+    <string name="type">TYPE</string>
+    <string name="credit">Credit</string>
+    <string name="debit">Debit</string>
+    <string name="country">COUNTRY</string>
+    <string name="bank">BANK</string>
+    <string name="get_info">Get Info</string>
+    <string name="history">Travel history</string>
+</resources>
