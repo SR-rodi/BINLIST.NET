@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.binlistnet.core.state.ClickItemState
 import com.example.binlistnet.core.state.LoadState
 import com.example.binlistnet.core.touchhelper.SwipeToDeleteCallback
+import com.example.binlistnet.core.touchhelper.setItemTouchHelper
 import com.example.binlistnet.databinding.FragmentStartBinding
 import com.example.binlistnet.feater_search_bin.presentation.adapter.HistoryAdapter
 import com.example.binlistnet.feater_search_bin.presentation.adapter.HistoryViewHolder.Companion.PREF_INTENT_GEO
@@ -35,7 +36,8 @@ abstract class BaseStartFragment : BaseFragment<FragmentStartBinding>() {
     private fun historyObserve() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.history.collect { list ->
-                binding.historyRecyclerView.adapter = HistoryAdapter(list) { onClickItem(it) }
+                val adapter = HistoryAdapter(list) { onClickItem(it) }
+                binding.historyRecyclerView.adapter = adapter
             }
         }
     }

@@ -9,6 +9,7 @@ import com.example.binlistnet.core.state.ClickItemState
 import com.example.binlistnet.databinding.FragmentStartBinding
 import com.example.binlistnet.core.basemodel.base_fragment.BaseStartFragment
 import com.example.binlistnet.core.touchhelper.SwipeToDeleteCallback
+import com.example.binlistnet.core.touchhelper.setItemTouchHelper
 
 class StartFragment : BaseStartFragment() {
 
@@ -17,7 +18,9 @@ class StartFragment : BaseStartFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        itemTouchHelper.attachToRecyclerView(binding.historyRecyclerView)
+        //itemTouchHelper.attachToRecyclerView(binding.historyRecyclerView)
+
+        binding.historyRecyclerView.setItemTouchHelper<Any>(binding.historyRecyclerView.adapter,(150 * resources.displayMetrics.density).toInt())
 
         onClickSearchButton()
 

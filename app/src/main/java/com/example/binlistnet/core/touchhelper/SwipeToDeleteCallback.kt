@@ -23,4 +23,8 @@ class SwipeToDeleteCallback(
         swipeEvent(viewHolder.adapterPosition)
     }
 
+    override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
+        return Int.MAX_VALUE.toFloat()
+    }
+
 }
