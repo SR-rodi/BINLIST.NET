@@ -1,7 +1,7 @@
 package com.example.binlistnet.di
 
 import androidx.room.Room
-import com.example.binlistnet.data.database.AppDataBase
+import com.example.binlistnet.core.database.AppDataBase
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

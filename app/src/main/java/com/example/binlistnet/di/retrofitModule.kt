@@ -1,6 +1,6 @@
 package com.example.binlistnet.di
 
-import com.example.binlistnet.domain.BinApi
+import com.example.binlistnet.feater_search_bin.data.BinApi
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
