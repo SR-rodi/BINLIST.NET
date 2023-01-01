@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.binlistnet.core.state.ClickItemState
 import com.example.binlistnet.databinding.FragmentStartBinding
 import com.example.binlistnet.core.basemodel.base_fragment.BaseStartFragment
+import com.example.binlistnet.core.touchhelper.SwipeToDeleteCallback
 
 class StartFragment : BaseStartFragment() {
 
@@ -15,7 +17,7 @@ class StartFragment : BaseStartFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getHistory()
+        itemTouchHelper.attachToRecyclerView(binding.historyRecyclerView)
 
         onClickSearchButton()
 
@@ -24,7 +26,6 @@ class StartFragment : BaseStartFragment() {
         observeData()
 
     }
-
 
     private fun buttonEnabledListener() {
 
@@ -41,7 +42,7 @@ class StartFragment : BaseStartFragment() {
 
     override fun onClickItem(clickItemState: ClickItemState) {
         when (clickItemState) {
-            ClickItemState.ITEM ->{
+            ClickItemState.ITEM -> {
                 viewModel.onClickSearchButton(clickItemState.data)
                 binding.historyRecyclerView.smoothScrollToPosition(0)
                 binding.appbar.setExpanded(true)

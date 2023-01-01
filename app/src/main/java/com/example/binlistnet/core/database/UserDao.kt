@@ -16,6 +16,9 @@ interface UserDao {
     @Query("DELETE FROM user_info")
     suspend fun clearDatabase()
 
+    @Delete
+    suspend fun deleteItem(item:UserInfoEntity)
+
     @Query("SELECT*FROM user_info")
     fun getData(): Flow<List<UserInfoEntity>>
 }

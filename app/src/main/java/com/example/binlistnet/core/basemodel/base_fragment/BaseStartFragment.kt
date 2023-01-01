@@ -5,8 +5,10 @@ import android.net.Uri
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.binlistnet.core.state.ClickItemState
 import com.example.binlistnet.core.state.LoadState
+import com.example.binlistnet.core.touchhelper.SwipeToDeleteCallback
 import com.example.binlistnet.databinding.FragmentStartBinding
 import com.example.binlistnet.feater_search_bin.presentation.adapter.HistoryAdapter
 import com.example.binlistnet.feater_search_bin.presentation.adapter.HistoryViewHolder.Companion.PREF_INTENT_GEO
@@ -22,6 +24,14 @@ abstract class BaseStartFragment : BaseFragment<FragmentStartBinding>() {
 
     abstract override fun initBinding(inflater: LayoutInflater): FragmentStartBinding?
 
+    private val swipeItem = SwipeToDeleteCallback { position -> onSwipeItem(position) }
+
+    protected val itemTouchHelper = ItemTouchHelper(swipeItem)
+
+    private fun onSwipeItem(position: Int) {
+        viewModel.onSwiped(position)
+    }
+
     private fun historyObserve() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.history.collect { list ->
@@ -32,7 +42,7 @@ abstract class BaseStartFragment : BaseFragment<FragmentStartBinding>() {
 
     protected abstract fun onClickItem(clickItemState: ClickItemState)
 
-    protected fun observeData(){
+    protected fun observeData() {
         loadStateObserve()
         userInfoObserve()
         historyObserve()

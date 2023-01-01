@@ -9,5 +9,7 @@ interface BinDataBaseRepository {
 
     suspend fun clearDatabase()
 
+    suspend fun deleteItem(data: UserInfoEntity)
+
     fun getAllData():Flow<List<UserInfoEntity>>
 }
