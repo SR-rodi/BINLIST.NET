@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 abstract class BaseViewModel : ViewModel() {
 
     protected val _loadState = MutableStateFlow(LoadState.START)
-    protected val loadState = _loadState.asStateFlow()
+    val loadState = _loadState.asStateFlow()
 
     val handler = CoroutineExceptionHandler { _, T ->
         Log.e("Kart", "${T.message}")

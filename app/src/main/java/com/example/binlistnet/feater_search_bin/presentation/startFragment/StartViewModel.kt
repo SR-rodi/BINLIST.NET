@@ -15,6 +15,10 @@ class StartViewModel(
     private val binDataBaseRepository: BinDataBaseRepository
 ) : BaseStartViewModel() {
 
+    init {
+        getHistory()
+    }
+
     fun onClickSearchButton(bin: String?) {
         if (bin != null && bin != "")
             viewModelScope.launch(Dispatchers.IO + handler) {
@@ -25,12 +29,9 @@ class StartViewModel(
                 _loadState.value = LoadState.SUCCESS
             } else _loadState.value = LoadState.ERROR.apply { message = INPUT_FIELD }
     }
-
-    override fun getHistory() {
+    fun getHistory() {
             binDataBaseRepository.getAllData().onEach {
                 _history.emit(it.toListUserInfoSmall())
             }.launchIn(viewModelScope)
     }
-
-
 }

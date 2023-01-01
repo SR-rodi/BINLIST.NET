@@ -13,9 +13,4 @@ abstract class BaseStartViewModel: BaseViewModel() {
     val _history = MutableSharedFlow<List<UserInfoSmall>>()
     val history = _history.asSharedFlow()
 
-    init {
-        getHistory()
-    }
-
-    abstract fun getHistory()
 }
